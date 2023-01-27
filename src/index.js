@@ -6,7 +6,7 @@ const app = express()
 
 app.use(express.json())
 
-app.use('/accounts', accountRoutes)
+app.use('/api/accounts', accountRoutes)
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);

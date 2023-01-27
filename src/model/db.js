@@ -23,5 +23,5 @@ export const Account = sequelize.define('account', {
     }
 })
 
-Account.sync({force:true})
+Account.sync({force:false})
 .then(() => console.log('db async!'))
