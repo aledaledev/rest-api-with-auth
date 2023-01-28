@@ -20,6 +20,12 @@ export const Account = sequelize.define('account', {
     },
     phone:{
         type: DataTypes.STRING,
+    },
+    role:{
+        type: DataTypes.STRING,
+    },
+    password:{
+        type: DataTypes.STRING
     }
 })
 
