@@ -17,7 +17,7 @@ authSession.post('/login', async (req,res) => {
     if(user.password !== password) return res.status(401).json({error:"incorrect password!"});
 
     const sessionId = nanoid()
-    sessions.push({sessionId, guid:user.id})
+    sessions.push({sessionId, id:user.id})
     //validar que no exista el mismo sessionId
 
     //httpOnly: el cliente no va poder leer la cookie, el servidor crea y guarda el id
@@ -38,7 +38,7 @@ authSession.get('/profile', async (req,res) => {
 
     if(!userSession) return res.status(401).json({error:"not authenticated"})
 
-    const user = await Account.findOne({where: {id:userSession.guid}})
+    const user = await Account.findOne({where: {id:userSession.id}})
 
     if(!user) return res.status(401).json({error:"user dont exists!"});
 
