@@ -1,12 +1,15 @@
 import {Router} from 'express'
 import {SignJWT, jwtVerify} from 'jose'
+import { validateLoginDTO } from '../dto/validate-login.js'
 import { Account } from '../model/db.js'
 
 const authToken = Router()
 
 //para usar token necesitamos 3 requisitos
 //token debe contener info, tiene una duracion determinada y debe ser verificable
-authToken.post('/login', async (req,res) => {
+authToken.post('/login', validateLoginDTO, async (req,res) => {
+
+    //validaciones aparte
     const {email, password} = req.body
 
     if(!email || !password) return res.status(400).json({error: "fill all fields"})
